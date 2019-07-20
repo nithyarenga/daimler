@@ -36,6 +36,13 @@ def question():
 @app.route('/solution', method='POST')
 def solution():
     #write to db 
+    wsock = request.environ.get('wsgi.websocket')
+    if not wsock:
+        abort(400, 'Expected WebSocket request.')
+
+    message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
+    wsock.send(dumps(message))
+    
     return ""
 
 @app.route('/current_question')
@@ -50,18 +57,17 @@ def current_solution():
 def feedback():
     return ""
 
-@app.route('/websocket')
-def handle_websocket():
-    wsock = request.environ.get('wsgi.websocket')
-    if not wsock:
-        abort(400, 'Expected WebSocket request.')
+# @app.route('/websocket')
+# def handle_websocket():
+#     wsock = request.environ.get('wsgi.websocket')
+#     if not wsock:
+#         abort(400, 'Expected WebSocket request.')
 
-    
-    try:
-        message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
-        wsock.send(dumps(message))
-    except WebSocketError:
-            break
+#     try:
+#         message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
+#         wsock.send(dumps(message))
+#     except WebSocketError:
+#             break
 
 from gevent.pywsgi import WSGIServer
 from geventwebsocket import WebSocketError
