@@ -28,6 +28,7 @@ def question():
     # value = request.body.read()
     #v = loads(value)
     prob = request.query.problem
+    global version 
     version = 2
     return {"problem" : "you are the problem", "solution": "what can i do about that", "id": 1}
 
@@ -39,7 +40,7 @@ def solution():
 
 @app.route('/current_question')
 def current_question():
-    return version
+    return {"version": version}
 
 @app.route('/current_solution', method='POST')
 def current_solution():
@@ -55,11 +56,11 @@ def handle_websocket():
     if not wsock:
         abort(400, 'Expected WebSocket request.')
 
-    while True:
-        try:
-            message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
-            wsock.send(dumps(message))
-        except WebSocketError:
+    
+    try:
+        message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
+        wsock.send(dumps(message))
+    except WebSocketError:
             break
 
 from gevent.pywsgi import WSGIServer
