@@ -36,6 +36,8 @@ def question():
 @app.route('/solution', method='POST')
 def solution():
     #write to db 
+    value = request.body.read()
+    v = loads(value)
     wsock = request.environ.get('wsgi.websocket')
     if not wsock:
         abort(400, 'Expected WebSocket request.')
@@ -43,7 +45,9 @@ def solution():
     message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
     wsock.send(dumps(message))
     
-    return ""
+    bottle.response.status = 200; 
+    bottle.response.body = json.dumps({'key':'value'}); 
+    return bottle.response
 
 @app.route('/current_question')
 def current_question():
