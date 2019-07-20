@@ -7,6 +7,7 @@ from datetime import datetime
 
 app = Bottle()
 
+version = 1 
 
 @app.hook('after_request')
 def enable_cors():
@@ -22,11 +23,11 @@ def enable_cors():
 def hello():
     return "Hello World!"
 
-@app.route('/question')
+@app.route('/solution')
 def question():
     value = request.body.read()
     v = loads(value)
-    return {"problem" : "you are the problem", "solution": "what can i do about that"}
+    return {"problem" : "you are the problem", "solution": "what can i do about that", "id": 1}
 
 
 @app.route('/solution', method='POST')
@@ -45,6 +46,10 @@ def current_question():
 def current_solution():
     return ""
 
+@app.route('/feedback', method='POST')
+def feedback():
+    return ""
+
 @app.route('/websocket')
 def handle_websocket():
     wsock = request.environ.get('wsgi.websocket')
@@ -54,7 +59,7 @@ def handle_websocket():
     while True:
         try:
             message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
-            wsock.send(message)
+            wsock.send(dumps(message))
         except WebSocketError:
             break
 
