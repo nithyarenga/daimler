@@ -36,18 +36,13 @@ def question():
 @app.route('/solution', method='POST')
 def solution():
     #write to db 
-    value = request.body.read()
-    v = loads(value)
-    wsock = request.environ.get('wsgi.websocket')
-    if not wsock:
-        abort(400, 'Expected WebSocket request.')
-
-    message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
-    wsock.send(dumps(message))
+    # value = request.body.read()
+    # if value not nil:
+    #  v = loads(value)
     
-    bottle.response.status = 200; 
-    bottle.response.body = json.dumps({'key':'value'}); 
-    return bottle.response
+    Bottle.response.status = 200; 
+    Bottle.response.body = dumps({'key':'value'}); 
+    return Bottle.response
 
 @app.route('/current_question')
 def current_question():
@@ -66,20 +61,13 @@ def feedback():
 #     wsock = request.environ.get('wsgi.websocket')
 #     if not wsock:
 #         abort(400, 'Expected WebSocket request.')
-
-#     try:
-#         message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
-#         wsock.send(dumps(message))
-#     except WebSocketError:
-#             break
-
-from gevent.pywsgi import WSGIServer
-from geventwebsocket import WebSocketError
-from geventwebsocket.handler import WebSocketHandler
-server = WSGIServer(("172.30.0.163", 8080), app,
-                    handler_class=WebSocketHandler)
-server.serve_forever()
-
+#     while true:
+#         try:
+#             message = wsock.receive()
+#             message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
+#             wsock.send(dumps(message))
+#         except WebSocketError:
+#                 break
 
 run(app, host='172.30.0.163', port=8082, debug=True)
 
