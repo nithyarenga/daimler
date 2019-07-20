@@ -31,7 +31,39 @@ def question():
 
 @app.route('/solution', method='POST')
 def solution():
+    #write to db 
     return ""
+
+@app.route('/current_question')
+def current_question():
+    value = request.body.read()
+    v = loads(value)
+    message = {"problem" : "you are the problem", "solution": "what can i do about that"}
+    return message
+
+@app.route('/current_solution', method='POST')
+def current_solution():
+    return ""
+
+@app.route('/websocket')
+def handle_websocket():
+    wsock = request.environ.get('wsgi.websocket')
+    if not wsock:
+        abort(400, 'Expected WebSocket request.')
+
+    while True:
+        try:
+            message = {"problem" : "you are the problem", "solution": "what can i do about that", "tags":["version","truck","version"]}
+            wsock.send(message)
+        except WebSocketError:
+            break
+
+from gevent.pywsgi import WSGIServer
+from geventwebsocket import WebSocketError
+from geventwebsocket.handler import WebSocketHandler
+server = WSGIServer(("172.30.0.163", 8080), app,
+                    handler_class=WebSocketHandler)
+server.serve_forever()
 
 
 run(app, host='172.30.0.163', port=8082, debug=True)
