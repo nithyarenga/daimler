@@ -1,0 +1,71 @@
+-------- 1 - Images
+ProblemID,Images,ProbID
+1,https://jarvis-dailmer.s3.amazonaws.com/Tools1.jpeg,1
+2,https://jarvis-dailmer.s3.amazonaws.com/Fuel.jpeg,2
+3,https://jarvis-dailmer.s3.amazonaws.com/Fuel.jpeg,3
+4,https://jarvis-dailmer.s3.amazonaws.com/Injector.jpeg,4
+5,video.mp4,5
+6,,6
+7,,7
+8,,8
+9,,9
+10,,10
+11,,11
+12,,12
+13,,13
+14,,14
+15,,15
+16,,16
+17,,17
+18,,18
+19,,19
+20,,20
+-------- 2 - Questions
+ProblemID,Question,Tags,ProbID
+1,I found a solution. I see that you have 2 of the 3 parts needed for the job in your bay. I have already requested for the fuel rail test cap and the part runner is on his way.,,1
+2,"Remove the valve cover and start the engine and let it idle. A small amount of white smoke is normal. If you don’t see smoke, one of the cylinders might be cracked",,2
+3,You have to do a manual cylinder cut-off test to find the problematic cylinder,,3
+4, One of your colleagues fixed a similar problem recently for the same engine. I can pull up his notes.,,4
+5,"This is what he did - Cap off the cylinders in the following sequence - 1, 3, 2 and 4. After capping off each cylinder, crank the engine and see if the crank time reduces to 3 to 5 seconds. If it does, you have found your leaking cylinder. If not, proceed to the next cylinder",,5
+6,,,6
+7,,,7
+8,,,8
+9,,,9
+10,,,10
+11,,,11
+12,,,12
+13,,,13
+14,,,14
+15,,,15
+16,,,16
+17,,,17
+18,,,18
+19,,,19
+20,,,20
+-------- 3 - IntentResponse
+Index,IntentResponse,ProbID,IntentID
+1,,,
+2,,,
+3,,,
+4,,,
+5,,,
+6,,,
+7,,,
+8,,,
+9,,,
+10,,,
+11,,,
+12,,,
+13,,,
+14,,,
+15,,,
+16,,,
+17,,,
+18,,,
+19,,,
+-------- 4 - Solutions
+,Solution,Datetime,ProblemID,Keywords,Entities
+0,"Don’t hope for miracles, rely on them",,1,,
+1,My Solution is Help me God!!!!,2019-07-20 12:09:35,1,,
+2,"Stark has a Freightliner Trucks (Model 114SD AB) If there are just gummy deposits in the injector body, you can clean them. Carb cleaner can do this very well for you, but you need to actuate the injector to get the carb cleaner in there to clean out anything which may be causing issues. If you pull the injector out of the bore to clean it, you should consider getting a rebuilt kit, which in most cases gives your a new screen (located in the top of the injector ... if so equipped), as well as the O-rings. In most cases, you don't want to reuse the o-rings because they will tend to leak. If they are older, they will most likely tear as you try to put them back into the injector bore, even if you coat them with oil. Besides, depending on the age, newer o-rings will not be susceptible to getting ate up by ethanol.",2019-07-20 15:15:36,1,"Carb cleaner, injector body, Freightliner Trucks, Model 114SD AB, likely tear, new screen, cases, injector, kit, age, O-rings, rings, issues, oil, ethanol, gummy deposits","Freightliner Trucks, Stark"
+3,"Capping off the cylinders in the following sequence - 1, 3, 2 and 4. After capping off each cylinder, crank the engine and see if the crank time reduces to 3 to 5 seconds. If it does, you’ve found your leaking cylinder. If not, proceed to the next cylinder",2019-07-21 05:06:18,1,"crank time, cylinders, leaking cylinder, next cylinder, engine, cylinder, sequence, seconds",
